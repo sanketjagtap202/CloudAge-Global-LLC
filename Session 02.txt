@@ -1,0 +1,41 @@
+Session 02:
+
+Copilot means: LLM + Agent - Create coding assistance
+copilot is costly in market.
+
+Data centre
+	---> Consumers
+	2 types of consumer:
+		1. Customer(who pays for it) - 5%
+			use SQL
+		2. free users(who don't pay for service)
+			use NO SQL (not only SQL)
+* ITIL = Informational Technology Infrastructure Library) : Description 
+
+ Difference in Analysis and Analytics:
+Analysis: Looks backword  to explain what happened and why.
+Analytics: Looks forward or across patterns to determine what is likely to happen next and how to optimize it.
+
+Ex: Bank
+    Tower
+    contact center
+    store(agent/employee)
+    website	
+They are having logs. 
+logs are in 3 formats:
+	1. unstructured(80%)
+	2. structured(10%)
+	3. semi-structured(10%)
+These is called as Big-Data.
+if we say structured: it means - data is in tabular form, where we can run SQL statement.
+if we say semi-structured means- html, xml, JSON, .tsv, .csv, .yaml files.
+
+F.M (foundational Module)
+then comes - LLM - 10gb (large language module - having 10 billion parameters)
+then comes - SLM - 4gb(small language Module - 1 billion parameters)
+then comes - 5TB - (Very Large language Module)
+
+ACID - Atomicity, Consistency, Isolation, Durability
+guarantee reliable database transactions.
+	
+

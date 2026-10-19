@@ -1,0 +1,25 @@
+Session 03
+--------------
+Interview quest - What is your department?
+Ans - We worked under BI
+Interview question - what is name of your department?
+Ans - Enterprise Data Analytics
+-----
+point 1 - Teradata - leader of Data Warehouse
+then comes cloudEra platform
+then comes AWS (by oracle) - 3.5 million customers
+AWS is big Data Aplliance.
+IBM - is Big Data Analytics
+Microsoft - Azure
+Google - BigQuery.
+
+Machine and Server: - 2 main concept:
+Under server:
+there is Technician(hardware) and Administrator(Software)
+
+if there were a downtime
+administrator will say for 4 hrs there is down time.(SLA - Service level Agreement)
+the their is:
+BDR - Backup Disster Recovery/Restored.
+
+

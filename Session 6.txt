@@ -1,0 +1,106 @@
+Session 6:
+----------------------------
+jdk path:
+	/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+--------------------------------
+USER ENV CONFIGURATION:
+	nano ~/.bashrc
+	source ~/.bashrc
+---------------------------------
+HADOOP Env CONFIGURATION:
+	nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+-----------------
+start-dfs.sh is a shell script provided by Apache Hadoop that starts all the core Hadoop Distributed File System (HDFS) daemons on your cluster.
+
+When you execute start-dfs.sh, it reads your configuration files (hdfs-site.xml, core-site.xml, workers or slaves) and launches three key background processes:
+
+NameNode: The master server that tracks the directory tree and metadata for all files stored across the cluster.
+
+DataNodes: The worker nodes that store and retrieve the actual data blocks.
+
+Secondary NameNode: The helper service that periodically takes snapshots of the NameNode's metadata to prevent data loss and assist with housekeeping.
+-------------------------------------------------
+
+Client and Server architecture(taken by Linux): now it is called as Master and Slave architecture(in Hadoop)
+
+sudo apt install openssh- : if i got to GNU.org, i will need openssh.
+client is needed on local machine.
+-------------------
+	Install SSH Server (To allow Hadoop to SSH into your machine)
+sudo apt update
+sudo apt install -y openssh-server
+-----------------
+	Install SSH Client (If missing)
+sudo apt update
+sudo apt install -y openssh-client
+---------
+	Enable and Start the SSH Service
+sudo systemctl enable --now ssh
+sudo systemctl status ssh  -> verifying its running
+--------------------
+
+	SSH Commands in sequence:
+ssh -v localhost
+	# 1. Install SSH server cleanly
+sudo apt update
+sudo apt install -y openssh-server
+ 	# 2. Start and enable the SSH service
+sudo systemctl enable --now ssh || sudo service ssh start
+	# 3. Create SSH directory if missing and set correct permissions
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+	# 4. Generate a fresh key (overwrites old one safely if needed)
+rm -f ~/.ssh/id_rsa ~/.ssh/id_rsa.pub
+ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
+	# 5. Authorize the public key locally
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+	#6. Automatically add localhost to known_hosts (prevents interactive prompt)
+ssh-keyscan -H localhost >> ~/.ssh/known_hosts 2>/dev/null
+ssh-keyscan -H 127.0.0.1 >> ~/.ssh/known_hosts 2>/dev/null
+ssh-keyscan -H $(hostname -I | awk '{print $1}') >> ~/.ssh/known_hosts 2>/dev/null
+
+------------
+	lscpu : to check virtulization feature.
+	lshw  : to check h/w
+-----------------------
+	VPC setting: VPC means VIRTUAL PRIVATE CLOUD:  Private network inside cloud where we can run gen AI application and services.
+Example: if you may not want ur application run on Public network,so VPC allows you to keep it in private and secure.
+	AWS
+	    ---- VPC
+		    ------Public subnet
+		         ----Load Balancer
+		    ------Private Subnet
+			 --EC2--Gen AI App
+			 --Database
+			 --Internal AI services		
+1. VPC only : means do all setttings by urself manually. (expert model)
+2. VPC and more: fully managed, nothing to do manually.(by AWS/administrator)
+-------------
+	Network Connections:
+NAT Gateways : always provided in public (regional-new)
+gateway: is just a device.
+---------------
+	VPC types:
+1. shared: OLAP, POC
+2. Dedicated: OLTP. RDBMS(where there is 2 banks having money transactions, should have a dedicated VPC)
+------------
+VPC : Allow you to use resources:
+CPU: allows you to share resources.
+-------------
+	DNS: Domain Name System: which converts Human readable domain name into IP address that computer use to communicate.
+Example: www.google.com --> DNS---> 142.133.xxx.xxx.---> Google server
+external DNS : for global traffic network
+internal DNS: for private network
+-----------------
+machines those are connected to the switch in VPC: are they traveling to outside DNS? -->  NO
+-----------------
+	NAT Gateway: : (Network Address Translation Gateway) NAT gateway in AWS Allows resource in private subnet to access Internet.
+Example:
+	private EC2---> NAT Gateway--->InternetGateway----Internet  
+
+Example: private EC2--> NAT Gateway--->Internet  --- Yes
+	Internet---> NAT Gaeway--->
+
+
+	

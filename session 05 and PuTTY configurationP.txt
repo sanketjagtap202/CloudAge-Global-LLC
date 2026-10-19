@@ -1,0 +1,82 @@
+session 05 and PuTTY configuration/Practice
+-------------
+
+aws configure
+if aws is not configure:
+sudo apt install awscli
+	If getting error:
+then try:
+sudo apt update
+sudo apt install -y unzip curl
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+-------
+If you're doing this because you want to access AWS from this EC2
+
+Don't immediately run aws configure.
+
+If this EC2 instance has an IAM role attached, you can use AWS CLI without storing your AWS access key and secret key on the server.
+
+aws configure
+---------------
+SID's Session:
+---------------------------------
+rw----r-----r----1
+owner----group----other---
+-----------
+chmod --->change ownership
+r ---> 4  (read)
+w---> 2 (write)
+x---> 1 (execute)
+777 ----> Owner, group and others given complete read-write permission.
+--------------------------------
+Basic commands and their meaning for puTTY:
+-----------------------------\
+	
+	1. File & Directory Navigation
+
+pwd — Print working directory (shows where you currently are).
+
+ls -la — List all files and directories, including hidden ones, with detailed permissions.
+
+cd /path/to/folder — Change directory to a specific folder.
+
+cd .. — Move up one directory level.
+
+cd ~ — Jump back to your home directory.
+
+	2. File & Folder Operations
+
+mkdir practice_folder — Create a new directory.
+
+touch myfile.txt — Create an empty file.
+
+cp myfile.txt copyfile.txt — Copy a file.
+
+mv myfile.txt newlocation/ — Move or rename a file.
+
+rm myfile.txt — Delete a file.
+
+rm -rf practice_folder — Delete a directory and all of its contents.
+
+	3. Viewing & Editing Files
+
+cat myfile.txt — Print the entire content of a file in the terminal.
+
+head -n 10 myfile.txt — View the first 10 lines of a file.
+
+tail -n 10 myfile.txt — View the last 10 lines of a file.
+
+nano myfile.txt — Open a basic text editor inside PuTTY (Ctrl + O to save, Ctrl + X to exit).
+
+	4. System Info & Monitoring
+
+df -h — Display disk space usage in human-readable format (MB/GB).
+
+free -h — Check memory (RAM) usage.
+
+top — Display real-time system processes (Press 'q' to exit).
+
+whoami — Shows your current logged-in username.
